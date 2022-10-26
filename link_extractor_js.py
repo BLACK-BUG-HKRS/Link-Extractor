@@ -65,8 +65,25 @@ def get_all_website_links(url):
                 print(f"{GRAY}[!] External link: {href}{RESET}")
                 external_urls.add(href)
             continue
-        
+
         print(f"{GREEN}[*] Internal link: {href}{RESET}")
         urls.add(href)
         internal_urls.add(href)
     return urls
+
+
+def crawl(url, max_urls=30):
+    """
+    Crawls a web page and extracts all links.
+    You'll find all links in `external_urls` and `internal_urls` global set variables.
+    params:
+        max_urls (int): number of max urls to crawl, default is 30.
+    """
+    global total_urls_visited
+    total_urls_visited += 1
+    print(f"{YELLOW}[*] Crawling: {url}{RESET}")
+    links = get_all_website_links(url)
+    for link in links:
+        if total_urls_visited > max_urls:
+            break
+        crawl(link, max_urls=max_urls)
