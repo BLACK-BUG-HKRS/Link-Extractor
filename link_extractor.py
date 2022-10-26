@@ -74,3 +74,13 @@ def crawl(url, max_urls=30):
         if total_urls_visited > max_urls:
             break
         crawl(link, max_urls=max_urls)
+
+
+
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="Link Extractor Tool with Python")
+    parser.add_argument("url", help="The URL to extract links from.")
+    parser.add_argument("-m", "--max-urls", help="Number of max URLs to crawl, default is 30.", default=30, type=int)
+    
+    args = parser.parse_args()
