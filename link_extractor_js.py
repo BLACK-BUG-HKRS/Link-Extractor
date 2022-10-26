@@ -97,3 +97,18 @@ if __name__ == "__main__":
     parser.add_argument("-m", "--max-urls", help="Number of max URLs to crawl, default is 30.", default=30, type=int)
     
     args = parser.parse_args()
+    url = args.url
+    max_urls = args.max_urls
+    domain_name = urlparse(url).netloc
+    crawl(url, max_urls=max_urls)
+
+    print("[+] Total Internal links:", len(internal_urls))
+    print("[+] Total External links:", len(external_urls))
+    print("[+] Total URLs:", len(external_urls) + len(internal_urls))
+    print("[+] Total crawled URLs:", max_urls)
+
+
+    # save the internal links to a file
+    with open(f"{domain_name}_internal_links.txt", "w") as f:
+        for internal_link in internal_urls:
+            print(internal_link.strip(), file=f)
