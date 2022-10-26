@@ -99,3 +99,8 @@ if __name__ == "__main__":
     with open(f"{domain_name}_internal_links.txt", "w") as f:
         for internal_link in internal_urls:
             print(internal_link.strip(), file=f)
+
+    # save the external links to a file
+    with open(f"{domain_name}_external_links.txt", "w") as f:
+        for external_link in external_urls:
+            print(external_link.strip(), file=f)
