@@ -31,7 +31,7 @@ For instance, to extract all links from 2 first URLs appeared in github.com:
 python link_extractor.py https://github.com -m 2
 ```
 
-This will result in a large list, here is the last 5 links:
+This will result in a large list, here is random chosen links:
 
 ```
 ...
